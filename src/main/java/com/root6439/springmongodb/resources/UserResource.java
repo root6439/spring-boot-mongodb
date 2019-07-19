@@ -11,20 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.root6439.springmongodb.domain.User;
 
-@RestController
-@RequestMapping(value = "/users")
-public class UserResource {
-	
-	@GetMapping
-	public ResponseEntity<List<User>> findAll() {
-		User user = new User("1", "Nicolas", "nicolas@gmail.com");
-		User user2 = new User("2", "Nicoly", "nicoly@gmail.com");
-		User user3 = new User("3", "Nathan", "nathan@gmail.com");
-		
-		List<User> list = new ArrayList<>();
-		list.addAll(Arrays.asList(user, user2, user3));
-		
-		return ResponseEntity.ok().body(list);
+	@RestController
+	@RequestMapping(value = "/users")
+	public class UserResource {
+		@GetMapping
+		public ResponseEntity<List<User>> findAll() {
+			List<User> list = new ArrayList<>();
+			User maria = new User("1001", "Maria Brown", "maria@gmail.com");
+			User alex = new User("1002", "Alex Green", "alex@gmail.com");
+			list.addAll(Arrays.asList(maria, alex));
+			return ResponseEntity.ok().body(list);
+		}
 	}
-	
-}
